@@ -1,11 +1,39 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import fetcher from '../../utils/authFetcher';
 import './Submit.css';
 
 export default class Submit extends Component {
-    // constructor() {
-    //     super();
+    constructor() {
+        super();
 
-    // }
+        this.state = {
+            author: '',
+            url: '',
+            title: '',
+            imageUrl: '',
+            description: ''
+        }
+
+        this.onInputChange = this.onInputChange.bind(this);
+        this.onInputSubmit = this.onInputSubmit.bind(this);
+    }
+
+    onInputChange(ev) {
+        this.setState({ [ev.target.name]: ev.target.value });
+    }
+
+    onInputSubmit(ev) {
+        ev.preventDefault();
+        fetcher.createPost(this.state)
+            .then(post =>
+                console.log(post)
+            )
+    }
+
+    componentDidMount() {
+        this.setState({ author: localStorage.getItem('username') });
+    }
 
     render() {
         return (
@@ -15,19 +43,19 @@ export default class Submit extends Component {
                     <p>Please, fill out the form. A thumbnail image is not required.</p>
                 </div>
                 <div className="submitArea formContainer">
-                    <form id="submitForm" className="submitForm">
+                    <form id="submitForm" className="submitForm" onSubmit={this.onInputSubmit}>
                         <label>Link URL:</label>
-                        <input name="url" value="" type="text" />
+                        <input name="url" type="text" onChange={this.onInputChange} />
                         <label>Link Title:</label>
-                        <input name="title" value="" type="text" />
+                        <input name="title" type="text" onChange={this.onInputChange} />
                         <label>Link Thumbnail Image (optional):</label>
-                        <input name="image" value="" type="text" />
+                        <input name="imageUrl" type="text" onChange={this.onInputChange} />
                         <label>Comment (optional):</label>
-                        <textarea name="comment"></textarea>
-                        <input id="btnSubmitPost" value="Submit" type="submit" />
+                        <textarea name="description" onChange={this.onInputChange}></textarea>
+                        <Link to="/myposts"><input id="btnSubmitPost" value="Submit" type="submit" /></Link>
                     </form>
                 </div>
-            </section>
+            </section >
         )
     }
 }

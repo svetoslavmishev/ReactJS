@@ -2,11 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import formatDate from '../../../utils/dateFormatting';
 
-const Post = (props) => {
+const Post = (props) => {   
     return (
         <article className="post">
             <div className="col rank">
-                <span></span>
+                <span>{props.index + 1}</span>
             </div>
             <div className="col thumbnail">
                 <a href={props.data.url}>
@@ -25,12 +25,11 @@ const Post = (props) => {
                     </div>
                     <div className="controls">
                         <ul>
-                            <li className="action"><Link className="commentsLink" to="#">comments</Link></li>
-                            <li className="action"><Link className="editLink" to="#">edit</Link></li>
-                            <li className="action"><Link className="deleteLink" to="#">delete</Link></li>
+                            <li className="action"><Link className="commentsLink" to={`/details/${props.data._id}`}>comments</Link></li>
+                            <li className="action"><Link className="editLink" to={`/edit/${props.data._id}`}>edit</Link></li>
+                            <li className="action"><Link className="deleteLink" to={`/deletepost/${props.data._id}`}>delete</Link></li>
                         </ul>
                     </div>
-
                 </div>
             </div>
         </article>

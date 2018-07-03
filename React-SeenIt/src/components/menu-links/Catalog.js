@@ -23,8 +23,8 @@ export default class Catalog extends Component {
     render() {
         return (
             <div className="posts">
-                {this.state.posts.map(post => {
-                    return <Post key={post._id} data={post} />
+                {this.state.posts.map((post, i) => {
+                    return <Post key={post._id} data={post} index={i} />
                 })}
             </div>
         )
