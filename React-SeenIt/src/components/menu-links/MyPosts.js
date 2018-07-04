@@ -12,9 +12,9 @@ export default class MyPosts extends Component {
     }
 
     componentDidMount() {
-        fetcher.myPosts()
+        fetcher.myPosts(this.state.posts.autor)
             .then(data => {
-                this.setState({ posts: data })
+                this.setState({ posts: data });
             })
     }
 

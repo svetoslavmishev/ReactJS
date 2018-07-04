@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import fetcher from '../../utils/authFetcher';
+import observer from '../../utils/observer';
 
 class RegisterForm extends Component {
     constructor(props) {
@@ -22,8 +23,10 @@ class RegisterForm extends Component {
         ev.preventDefault();
 
         fetcher.register(this.state)
-            .then(parsedData =>
-                console.log(parsedData));
+            .then(res => {
+                observer.trigger(observer.events.loginUser, res.username);
+                localStorage.setItem('token', res._kmd.authtoken);
+            })
     }
 
     render() {
@@ -35,7 +38,7 @@ class RegisterForm extends Component {
                 <label>Password:</label>
                 <input name="password" type="password" onChange={this.onRegisterChange} />
                 <label>Repeat Password:</label>
-                <input name="repeatPass" type="password" onChange={this.onRegisterSubmit} />
+                <input name="repeatPass" type="password" onChange={this.onRegisterChange} />
                 <input id="btnRegister" value="Sign Up" type="submit" />
             </form>
         )

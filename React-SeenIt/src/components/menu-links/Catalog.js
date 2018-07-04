@@ -24,7 +24,7 @@ export default class Catalog extends Component {
         return (
             <div className="posts">
                 {this.state.posts.map((post, i) => {
-                    return <Post key={post._id} data={post} index={i} />
+                    return <Post key={post._id} data={post} index={++i} />
                 })}
             </div>
         )

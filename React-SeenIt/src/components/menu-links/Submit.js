@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import fetcher from '../../utils/authFetcher';
 import './Submit.css';
 
@@ -12,23 +12,26 @@ export default class Submit extends Component {
             url: '',
             title: '',
             imageUrl: '',
-            description: ''
+            description: '',
+            redirect: false
         }
 
         this.onInputChange = this.onInputChange.bind(this);
-        this.onInputSubmit = this.onInputSubmit.bind(this);
+        this.createPost = this.createPost.bind(this);
     }
 
     onInputChange(ev) {
         this.setState({ [ev.target.name]: ev.target.value });
     }
 
-    onInputSubmit(ev) {
+    createPost(ev) {
         ev.preventDefault();
+
         fetcher.createPost(this.state)
-            .then(post =>
-                console.log(post)
-            )
+            .then(newPost => {
+                console.log(newPost);
+                this.setState({ redirect: true })
+            })
     }
 
     componentDidMount() {
@@ -36,6 +39,9 @@ export default class Submit extends Component {
     }
 
     render() {
+        if (this.props.redirect) {
+            return <Redirect to='/myposts' />;
+        }
         return (
             <section id="viewSubmit">
                 <div className="submitArea">
@@ -43,7 +49,7 @@ export default class Submit extends Component {
                     <p>Please, fill out the form. A thumbnail image is not required.</p>
                 </div>
                 <div className="submitArea formContainer">
-                    <form id="submitForm" className="submitForm" onSubmit={this.onInputSubmit}>
+                    <form id="submitForm" className="submitForm" onSubmit={this.createPost}>
                         <label>Link URL:</label>
                         <input name="url" type="text" onChange={this.onInputChange} />
                         <label>Link Title:</label>
@@ -52,9 +58,10 @@ export default class Submit extends Component {
                         <input name="imageUrl" type="text" onChange={this.onInputChange} />
                         <label>Comment (optional):</label>
                         <textarea name="description" onChange={this.onInputChange}></textarea>
-                        <Link to="/myposts"><input id="btnSubmitPost" value="Submit" type="submit" /></Link>
+                        <input id="btnSubmitPost" value="Submit" type="submit" />
                     </form>
                 </div>
+                {(this.state.redirect) ? <Redirect to="/myposts" /> : ''}
             </section >
         )
     }

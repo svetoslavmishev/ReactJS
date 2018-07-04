@@ -6,7 +6,7 @@ const Post = (props) => {
     return (
         <article className="post">
             <div className="col rank">
-                <span>{props.index + 1}</span>
+                <span>{props.index}</span>
             </div>
             <div className="col thumbnail">
                 <a href={props.data.url}>

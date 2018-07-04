@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import fetcher from '../../utils/authFetcher';
+import observer from '../../utils/observer';
 
 class LoginForm extends Component {
     constructor(props) {
@@ -23,9 +24,15 @@ class LoginForm extends Component {
 
         fetcher.login(this.state)
             .then(res => {
-                localStorage.setItem('token', res._kmd.authtoken);
-                localStorage.setItem('username', res.username);
-            });
+                if (res.error) {
+                    observer.trigger(observer.events.notification, { type: "error", message: res.error });
+                    return;
+                } else {
+                    observer.trigger(observer.events.loginUser, res.username);
+                    observer.trigger(observer.events.notification, { type: "success", message: 'Login successfully' });
+                    localStorage.setItem('token', res._kmd.authtoken);
+                }
+            })
     }
 
     render() {

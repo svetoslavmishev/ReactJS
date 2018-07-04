@@ -1,13 +1,31 @@
-import React from 'react';
+import React, { Component } from 'react';
+import observer from '../../utils/observer';
 import './Header.css'
 
-const Header = () => {
-    return (
-        <header>
-            <span className="logo">☃</span><span className="header">SeenIt</span>
-            <div id="profile"><span>{localStorage.getItem('username')}</span>|<a href="#'/logout">logout</a></div>
-        </header>
-    )
-}
+export default class Header extends Component {
+    constructor(props) {
+        super(props);
 
-export default Header;
+        this.state = {
+            username: ''
+        }
+
+        observer.subscribe(observer.events.loginUser, this.userLoggedIn)
+    }
+
+    userLoggedIn = username => this.setState({ username });
+
+    render() {
+        const loggedInUser = <div id="profile">
+            <span>Welcome, {this.state.username}</span>|
+        <a href="/logout">logout</a>
+        </div>;
+
+        return (
+            <header>
+                <span className="logo">☃</span> <span className="header">SeenIt</span>
+                {this.state.username ? loggedInUser : null}
+            </header >
+        )
+    }
+}
