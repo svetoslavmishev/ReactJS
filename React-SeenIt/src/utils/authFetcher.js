@@ -31,27 +31,28 @@ let fetcher = {
         return fetch(`${baseUrl}/user/${app_id}/_logout`, {
             method: 'POST',
             headers: {
-                Authorization: 'Kinvey ' + localStorage.getItem('token')
+                Authorization: 'Kinvey ' + sessionStorage.getItem('token')
             }
-        }).then(data => {
-            return data.json();
         })
+        // .then(data => {
+        //     return data.json();
+        // })
     },
     allPosts: () => {
         return fetch(`${baseUrl}/appdata/${app_id}/posts?query={}&sort={"_kmd.ect": -1}`, {
             method: 'GET',
             headers: {
-                Authorization: 'Kinvey ' + localStorage.getItem('token')
+                Authorization: 'Kinvey ' + sessionStorage.getItem('token')
             }
         }).then(data => {
             return data.json();
         })
     },
     myPosts: (username) => {
-        return fetch(`${baseUrl}/appdata/${app_id}/posts?query={"author":"${localStorage.getItem('username')}"}&sort={"_kmd.ect": -1}`, {
+        return fetch(`${baseUrl}/appdata/${app_id}/posts?query={"author":"${sessionStorage.getItem('username')}"}&sort={"_kmd.ect": -1}`, {
             method: 'GET',
             headers: {
-                Authorization: 'Kinvey ' + localStorage.getItem('token')
+                Authorization: 'Kinvey ' + sessionStorage.getItem('token')
             }
         }).then(data => {
             return data.json();
@@ -62,8 +63,18 @@ let fetcher = {
             method: 'POST',
             body: JSON.stringify(stateObj),
             headers: {
-                Authorization: 'Kinvey ' + localStorage.getItem('token'),
+                Authorization: 'Kinvey ' + sessionStorage.getItem('token'),
                 'Content-Type': 'application/json'
+            }
+        }).then(data => {
+            return data.json();
+        })
+    },
+    getEditPost: (id) => {
+        return fetch(`${baseUrl}/appdata/${app_id}/posts/${id}`, {
+            method: 'GET',
+            headers: {
+                Authorization: 'Kinvey ' + sessionStorage.getItem('token')
             }
         }).then(data => {
             return data.json();
@@ -71,9 +82,9 @@ let fetcher = {
     },
     editPost: (id) => {
         return fetch(`${baseUrl}/appdata/${app_id}/posts/${id}`, {
-            method: 'GET',
+            method: 'PUT',
             headers: {
-                Authorization: 'Kinvey ' + localStorage.getItem('token')
+                Authorization: 'Kinvey ' + sessionStorage.getItem('token')
             }
         }).then(data => {
             return data.json();
@@ -83,7 +94,17 @@ let fetcher = {
         return fetch(`${baseUrl}/appdata/${app_id}/comments?query={"postId":"${id}"}&sort={"_kmd.ect": -1}`, {
             method: 'GET',
             headers: {
-                Authorization: 'Kinvey ' + localStorage.getItem('token')
+                Authorization: 'Kinvey ' + sessionStorage.getItem('token')
+            }
+        }).then(data => {
+            return data.json();
+        })
+    },
+    deletePost: (id) => {
+        return fetch(`${baseUrl}/appdata/${app_id}/posts/${id} `, {
+            method: 'DELETE',
+            headers: {
+                Authorization: 'Kinvey ' + sessionStorage.getItem('token')
             }
         }).then(data => {
             return data.json();

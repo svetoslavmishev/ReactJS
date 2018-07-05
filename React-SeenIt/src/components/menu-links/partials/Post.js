@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import formatDate from '../../../utils/dateFormatting';
 
-const Post = (props) => {   
+const Post = (props) => {
     return (
         <article className="post">
             <div className="col rank">
@@ -27,7 +27,7 @@ const Post = (props) => {
                         <ul>
                             <li className="action"><Link className="commentsLink" to={`/details/${props.data._id}`}>comments</Link></li>
                             <li className="action"><Link className="editLink" to={`/edit/${props.data._id}`}>edit</Link></li>
-                            <li className="action"><Link className="deleteLink" to={`/deletepost/${props.data._id}`}>delete</Link></li>
+                            <li className="action"><Link className="deleteLink" to={`/delete/${props.data._id}`}>delete</Link></li>
                         </ul>
                     </div>
                 </div>

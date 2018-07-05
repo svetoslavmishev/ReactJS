@@ -18,8 +18,8 @@ class App extends Component {
   }
 
   componentDidMount() {
-    if (localStorage.getItem('token')) {
-      this.setState({ token: localStorage.getItem('token') });
+    if (sessionStorage.getItem('token')) {
+      this.setState({ token: sessionStorage.getItem('token') });
     }
   }
 
@@ -29,7 +29,7 @@ class App extends Component {
         <div>
           <Header />
           <Notification />
-          {(this.state.token === '') ? <Welcome /> : <Menu />}
+          {this.state.token ? <Menu /> : <Welcome />}
           <Footer />
         </div>
       </BrowserRouter >

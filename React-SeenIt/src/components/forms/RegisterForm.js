@@ -24,8 +24,9 @@ class RegisterForm extends Component {
 
         fetcher.register(this.state)
             .then(res => {
+                this.setState({ username: '', password: '' })
                 observer.trigger(observer.events.loginUser, res.username);
-                localStorage.setItem('token', res._kmd.authtoken);
+                sessionStorage.setItem('token', res._kmd.authtoken);
             })
     }
 
@@ -34,9 +35,9 @@ class RegisterForm extends Component {
             <form id="registerForm" onSubmit={this.onRegisterSubmit}>
                 <h2>Register</h2>
                 <label>Username:</label>
-                <input name="username" type="text" onChange={this.onRegisterChange} />
+                <input name="username" type="text" onChange={this.onRegisterChange} value={this.state.username} />
                 <label>Password:</label>
-                <input name="password" type="password" onChange={this.onRegisterChange} />
+                <input name="password" type="password" onChange={this.onRegisterChange} value={this.state.password} />
                 <label>Repeat Password:</label>
                 <input name="repeatPass" type="password" onChange={this.onRegisterChange} />
                 <input id="btnRegister" value="Sign Up" type="submit" />

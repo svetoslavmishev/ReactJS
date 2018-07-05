@@ -7,8 +7,8 @@ class Welcome extends Component {
         return (
             <div className="welcome" >
                 <div className="signup">
-                    <LoginForm />
-                    <RegisterForm />
+                    <LoginForm {...this.props} />
+                    <RegisterForm {...this.props} />
                 </div>
 
                 <div className="about">

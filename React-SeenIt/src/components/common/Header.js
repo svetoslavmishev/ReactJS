@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import observer from '../../utils/observer';
+import { Link } from 'react-router-dom'
 import './Header.css'
 
 export default class Header extends Component {
@@ -10,16 +11,16 @@ export default class Header extends Component {
             username: ''
         }
 
-        observer.subscribe(observer.events.loginUser, this.userLoggedIn)
+        observer.subscribe(observer.events.loginUser, this.userLoggedIn.bind(this))
     }
 
-    userLoggedIn = username => this.setState({ username });
+    userLoggedIn = (username) => this.setState({ username });
 
     render() {
         const loggedInUser = <div id="profile">
-            <span>Welcome, {this.state.username}</span>|
-        <a href="/logout">logout</a>
-        </div>;
+            <span>Welcome, {this.state.username}!</span>|
+        <Link to="/logout">logout</Link>
+        </div >;
 
         return (
             <header>

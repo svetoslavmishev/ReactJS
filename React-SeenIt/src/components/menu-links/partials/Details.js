@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import fetcher from '../../../utils/authFetcher';
 import formatDate from '../../../utils/dateFormatting';
+import { Link } from 'react-router-dom';
 
 class Details extends Component {
     constructor() {
@@ -15,7 +16,7 @@ class Details extends Component {
     componentDidMount() {
         let id = this.props.match.params.id;
 
-        fetcher.editPost(id)
+        fetcher.getEditPost(id)
             .then(data => {
                 this.setState({ post: data }, () => fetcher.getComments(id)
                     .then(data => {
@@ -42,12 +43,12 @@ class Details extends Component {
                         <div className="details">
                             <p>{this.state.post.description}</p>
                             <div className="info">
-                                submitted {} ago by {this.state.post.author}
+                                submitted by {this.state.post.author}
                             </div>
                             <div className="controls">
                                 <ul>
-                                    <li className="action"><a className="editLink" href="/edit/:id">edit</a></li>
-                                    <li className="action"><a className="deleteLink" href="/deletepost/:id">delete</a></li>
+                                    <li className="action"><Link className="editLink" to="/edit/:id">edit</Link></li>
+                                    <li className="action"><Link className="deleteLink" to="/delete/:id">delete</Link></li>
                                 </ul>
                             </div>
 
@@ -69,7 +70,7 @@ class Details extends Component {
                     return <article className="post post-content" key={comment._id}>
                         <p>{comment.content}</p>
                         <div className="info">
-                            submitted {formatDate(comment._kmd.lmt)} ago by {comment.author} | <a href='/deletecomment/:id' className="deleteLink">delete</a>
+                            submitted {formatDate(comment._kmd.lmt)} ago by {comment.author} | <Link href='/delete/:id' className="deleteLink">delete</Link>
                         </div>
                     </article>
                 })}

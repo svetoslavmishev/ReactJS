@@ -35,7 +35,7 @@ export default class Submit extends Component {
     }
 
     componentDidMount() {
-        this.setState({ author: localStorage.getItem('username') });
+        this.setState({ author: sessionStorage.getItem('username') });
     }
 
     render() {

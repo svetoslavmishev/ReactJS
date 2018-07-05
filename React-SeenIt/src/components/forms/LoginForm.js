@@ -24,14 +24,14 @@ class LoginForm extends Component {
 
         fetcher.login(this.state)
             .then(res => {
-                if (res.error) {
-                    observer.trigger(observer.events.notification, { type: "error", message: res.error });
-                    return;
-                } else {
-                    observer.trigger(observer.events.loginUser, res.username);
-                    observer.trigger(observer.events.notification, { type: "success", message: 'Login successfully' });
-                    localStorage.setItem('token', res._kmd.authtoken);
-                }
+                observer.trigger(observer.events.loginUser, res.username);
+                observer.trigger(observer.events.notification, { type: "success", message: 'Login successfully' });
+                sessionStorage.setItem('token', res._kmd.authtoken);
+                this.props.history.push('/catalog');
+            }).catch(err => {
+                this.setState({ username: '', password: '' });
+                observer.trigger(observer.events.notification, { type: "error", message: err.error });
+                return;
             })
     }
 
@@ -40,9 +40,9 @@ class LoginForm extends Component {
             < form id="loginForm" onSubmit={this.onInputSubmit} >
                 <h2>Sign In</h2>
                 <label>Username:</label>
-                <input name="username" type="text" onChange={this.onInputChange} />
+                <input name="username" type="text" onChange={this.onInputChange} value={this.state.username} />
                 <label>Password:</label>
-                <input name="password" type="password" onChange={this.onInputChange} />
+                <input name="password" type="password" onChange={this.onInputChange} value={this.state.password} />
                 <input id="btnLogin" value="Sign In" type="submit" />
             </form >
         )
