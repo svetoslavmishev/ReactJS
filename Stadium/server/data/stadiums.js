@@ -36,22 +36,20 @@ module.exports = {
   },
   findById: (id) => {
     return stadiums[id]
-  }
-  //,
-  // addReview: (id, rating, comment, user) => {
-  //   const review = {
-  //     rating,
-  //     comment,
-  //     user,
-  //     createdOn: new Date()
-  //   }
+  },
+  addReview: (id, comment, user) => {
+    const review = {
+      comment,
+      user,
+      createdOn: new Date()
+    }
 
-  //   hotels[id].reviews.push(review)
-  // },
-  // allReviews: (id) => {
-  //   return hotels[id]
-  //     .reviews
-  //     .sort((a, b) => b.createdOn - a.createdOn)
-  //     .slice(0)
-  // }
+    stadiums[id].reviews.push(review)
+  },
+  allReviews: (id) => {
+    return stadiums[id]
+      .reviews
+      .sort((a, b) => b.createdOn - a.createdOn)
+      .slice(0)
+  }
 }

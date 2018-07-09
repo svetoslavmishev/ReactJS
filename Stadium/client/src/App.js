@@ -7,7 +7,8 @@ import StadiumPage from './components/Stadium/StadiumPage';
 import CreateStadium from './components/Stadium/CreateStadium';
 import HomePage from './components/HomePage/HomePage';
 import Details from './components/Stadium/Details';
-import Profile from './components/User/Profile';
+import Profile from './components/Users/Profile';
+import AdminPAnel from './components/Users/AdminPanel';
 
 class App extends Component {
     constructor(props) {
@@ -34,6 +35,7 @@ class App extends Component {
                     <Route path="/stadium/details/:id" component={Details} />
                     <Route path="/mystadium" component={Details} />
                     <Route path="/profile" component={Profile} />
+                    <Route path="/admin" component={AdminPAnel} />
                 </Switch>
             </div>
         );

@@ -31,8 +31,9 @@ body {
 .welcome-box {
     margin: auto;
     text-align: center;
-    width: 50%;
-    padding: 20px;
+    width: 55%;
+    height: 25%;
+    padding: 10px;
 }
 
 .welcome-image {   
@@ -53,4 +54,9 @@ body {
   align-content: center
 }
 
-
+.article-box {
+  width: 350px;
+  border: solid 1px;
+  margin: 5px;
+  border-radius: 5px;
+}

@@ -43,7 +43,7 @@ export default class CreateStadium extends Component {
             .then(res => {
                 if (res.success) {
                     toastr.success(res.message);
-                    console.log(res.stadium);
+                    this.props.history.push('/stadium/all');
                 } else {
                     toastr.error(res.message);
                 }

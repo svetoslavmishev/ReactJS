@@ -56,4 +56,26 @@ async function getDetails(id) {
     return await res.json();
 }
 
-export { register, login, createStadium, getPage, getDetails };
+async function createReview(stadiumId, comment) {
+    const res = await fetch(host + `stadium/details/${stadiumId}/reviews/create`, {
+        method: 'POST',
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('token'),
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ comment })
+    });
+    return await res.json();
+}
+
+async function getReviews(id) {
+    const res = await fetch(host + `stadium/details/${id}/reviews`, {
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+        }
+    });
+    return await res.json();
+}
+
+export { register, login, createStadium, getPage, getDetails, createReview, getReviews };

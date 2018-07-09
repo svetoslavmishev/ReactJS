@@ -7,12 +7,15 @@ module.exports = {
     user.id = id
 
     usersById[id] = user
-    usersByEmail[user.email] = user
+    usersByEmail[user.email] = user	
   },
   findByEmail: (email) => {
     return usersByEmail[email]
   },
   findById: (id) => {
     return usersById[id]
+  },
+  findAll: () =>{
+	return users;
   }
 }
