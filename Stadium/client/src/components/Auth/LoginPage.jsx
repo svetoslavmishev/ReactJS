@@ -39,20 +39,23 @@ export default class LoginPage extends Component {
             <div className="container">
                 <h1>Login</h1>
 
-                <form onSubmit={this.onSubmitHandler}>
+                <form onSubmit={this.onSubmitHandler} className="form-group">
                     <Input
+                        className="form-control"
                         name="email"
                         value={this.state.email}
                         onChange={this.onChangeHandler}
                         label="E-mail"
                     />
                     <Input
+                        className="form-control"
                         name="password"
                         type="password"
                         value={this.state.password}
                         onChange={this.onChangeHandler}
                         label="Password"
                     />
+                    <br />
                     <input type="submit" className="btn btn-primary" value="Login" />
                 </form>
             </div>

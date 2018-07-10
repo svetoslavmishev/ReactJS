@@ -78,4 +78,24 @@ async function getReviews(id) {
     return await res.json();
 }
 
-export { register, login, createStadium, getPage, getDetails, createReview, getReviews };
+async function getStatistic() {
+    const res = await fetch(host + `stats`, {
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+        }
+    });
+    return await res.json();
+}
+
+async function removeStadium(id) {
+    const res = await fetch(host + `delete/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+        }
+    });
+    return await res.json();
+}
+
+export { register, login, createStadium, getPage, getDetails, createReview, getReviews, getStatistic, removeStadium };

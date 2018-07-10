@@ -37,20 +37,23 @@ export default class RegisterPage extends Component {
         return (
             <div className="container">
                 <h1>Register</h1>
-                <form onSubmit={this.onSubmitHandler}>
+                <form onSubmit={this.onSubmitHandler} className="form-group">
                     <Input
+                        className="form-control"
                         name="name"
                         value={this.state.name}
                         onChange={this.onChangeHandler}
                         label="Name"
                     />
                     <Input
+                        className="form-control"
                         name="email"
                         value={this.state.email}
                         onChange={this.onChangeHandler}
                         label="E-mail"
                     />
                     <Input
+                        className="form-control"
                         name="password"
                         type="password"
                         value={this.state.password}
@@ -58,12 +61,13 @@ export default class RegisterPage extends Component {
                         label="Password"
                     />
                     <Input
+                        className="form-control"
                         name="repeat"
                         type="password"
                         value={this.state.repeat}
                         onChange={this.onChangeHandler}
                         label="Repeat password"
-                    />
+                    /><br/>
                     <input type="submit" className="btn btn-primary" value="Register" />
                 </form>
             </div>

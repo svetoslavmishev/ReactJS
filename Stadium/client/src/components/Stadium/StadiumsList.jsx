@@ -7,6 +7,8 @@ export default class StadiumsList extends Component {
             <div className="stadiums-list">
                 {this.props.stadiums.map(s => {
                     return <Stadium
+                        alowDelete={s.id === 1}
+                        removeStadium={() => this.props.removeStadium(s.id)}
                         key={s.id}
                         id={s.id}
                         name={s.name}

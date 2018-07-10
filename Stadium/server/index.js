@@ -5,7 +5,8 @@ const passport = require('passport')
 const localSignupStrategy = require('./passport/local-signup')
 const localLoginStrategy = require('./passport/local-login')
 const authRoutes = require('./routes/auth')
-const StadiumsRoutes = require('./routes/stadiums')
+const stadiumsRoutes = require('./routes/stadiums')
+const statsRoutes = require('./routes/stats')
 
 const app = express()
 
@@ -21,7 +22,8 @@ passport.use('local-login', localLoginStrategy)
 
 // routes
 app.use('/auth', authRoutes)
-app.use('/stadium', StadiumsRoutes)
+app.use('/stadium', stadiumsRoutes)
+app.use('/stats', statsRoutes)
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}...`)

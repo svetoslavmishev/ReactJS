@@ -54,9 +54,18 @@ body {
   align-content: center
 }
 
+
+.form-control {
+  width: 380px;
+}
+
 .article-box {
   width: 350px;
   border: solid 1px;
   margin: 5px;
   border-radius: 5px;
 }
+
+.error-template {padding: 40px 15px;text-align: center;}
+.error-actions {margin-top:15px;margin-bottom:15px;}
+.error-actions .btn { margin-right:10px; }

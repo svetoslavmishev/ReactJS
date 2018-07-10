@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import StadiumsList from '../Stadium/StadiumsList';
-import { getPage } from '../../api/remote';
+import { getPage, removeStadium } from '../../api/remote';
 
 export default class StadiumPage extends Component {
     constructor(props) {
@@ -9,6 +9,8 @@ export default class StadiumPage extends Component {
         this.state = {
             stadiums: []
         }
+
+        this.removeStadium = this.removeStadium.bind(this);
     }
 
     componentDidMount() {
@@ -20,11 +22,16 @@ export default class StadiumPage extends Component {
         this.setState({ stadiums: res })
     }
 
+     removeStadium(id) {
+       removeStadium(id);
+    }
+
+
     render() {
         return (
             <div className="welcome-box">
                 <h1><b>FIFA Stadiums</b></h1>
-                <StadiumsList stadiums={this.state.stadiums} />
+                <StadiumsList stadiums={this.state.stadiums} removeStadium={this.removeStadium} />
                 {/* TODO PAGINATION */}
             </div >
         );

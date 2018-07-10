@@ -22,6 +22,9 @@ export default class Header extends Component {
                             {loggedIn && <NavLink to="/create" className="nav-link">Add Stadium</NavLink>}
                         </li>
                         <li className="nav-item active">
+                            {loggedIn && <NavLink to="/mystadiums" className="nav-link">My Stadiums</NavLink>}
+                        </li>
+                        <li className="nav-item active">
                             {loggedIn && <NavLink to="/profile" className="nav-link">Profie</NavLink>}
                         </li>
                         <li className="nav-item active">

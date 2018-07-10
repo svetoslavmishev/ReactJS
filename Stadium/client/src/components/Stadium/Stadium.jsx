@@ -12,12 +12,13 @@ export default class Stadium extends Component {
                 </div>
                 <br />
                 <Link to={'/stadium/details/' + Number(this.props.id)} className="btn btn-primary">Details</Link>
+                {this.props.alowDelete && <Link to="" className="btn btn-primary" onClick={this.props.removeStadium}>Delete</Link>}
 
                 {/* {loggedIn Link className="action" to="/edit/:id">edit</Link>}
                 <Link className="action" to="/edit/:id">edit</Link>
                 <Link className="action" to="/delete/:id">delete</Link> */}
 
-            </div>
+            </div >
         )
     }
 }

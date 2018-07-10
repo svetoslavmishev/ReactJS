@@ -1,6 +1,7 @@
 let stadiums = {}
 
 module.exports = {
+  total: () => Object.keys(stadiums).length,
   save: (stadium) => {
     const id = Object.keys(stadiums).length + 1
     stadium.id = id
@@ -51,5 +52,15 @@ module.exports = {
       .reviews
       .sort((a, b) => b.createdOn - a.createdOn)
       .slice(0)
+  },
+  byUser: (user) => {
+    return Object
+      .keys(stadiums)
+      .map(key => stadiums[key])
+      .filter(stadium => stadium.createdBy === user)
+      .sort((a, b) => b.id - a.id)
+  },
+  delete: (id) => {
+    delete stadiums[id]
   }
 }
