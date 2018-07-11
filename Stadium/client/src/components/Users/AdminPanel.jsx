@@ -6,8 +6,8 @@ export default class AdminPAnel extends Component {
         super(props);
 
         this.state = {
-            stadiums: 0,
-            users: 0
+            stadiums: '',
+            users: ''
         }
     }
 
@@ -48,14 +48,14 @@ export default class AdminPAnel extends Component {
                         </tr>
                     </tbody>
                 </table> */}
-                <div class="container">
-                    <div class="row">
-                        <div class="information-box">
-                            <div class="information-left">
+                <div className="container">
+                    <div className="row">
+                        <div className="information-box">
+                            <div className="information-left">
                                 <span><strong>Users:</strong></span>
                                 <span>{this.state.users}</span>
                             </div>
-                            <div class="information-middle">
+                            <div className="information-middle">
                                 <span><strong>Stadiums:</strong></span>
                                 <span>{this.state.stadiums}</span>
                             </div>

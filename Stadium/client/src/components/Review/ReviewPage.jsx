@@ -62,8 +62,8 @@ export default class ReviewPage extends Component {
                     <input type="submit" value="Post review" />
                 </form>
 
-                {this.state.reviews.map(r => {
-                    return <Review comment={r.comment} user={r.user} createdOn={r.createdOn} />
+                {this.state.reviews.map((r,i) => {
+                    return <Review key={i} comment={r.comment} user={r.user} createdOn={r.createdOn} />
                 })}
             </div>
         )

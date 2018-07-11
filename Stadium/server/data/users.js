@@ -15,5 +15,6 @@ module.exports = {
   },
   findById: (id) => {
     return usersById[id]
-  }
+  },
+  findAll: () => Object.keys()
 }

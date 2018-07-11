@@ -1,4 +1,4 @@
-const host = 'http://localhost:8080/';
+const host = 'http://localhost:5000/';
 
 async function register(name, email, password) {
     const res = await fetch(host + 'auth/signup', {
@@ -89,7 +89,7 @@ async function getStatistic() {
 }
 
 async function removeStadium(id) {
-    const res = await fetch(host + `delete/${id}`, {
+    const res = await fetch(host + `stadium/delete/${id}`, {
         method: 'DELETE',
         headers: {
             'Authorization': 'Bearer ' + localStorage.getItem('token')
@@ -98,4 +98,25 @@ async function removeStadium(id) {
     return await res.json();
 }
 
-export { register, login, createStadium, getPage, getDetails, createReview, getReviews, getStatistic, removeStadium };
+async function getMyStadiums() {
+    const res = await fetch(host + `stadium/mystadiums`, {
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+        }
+    });
+    return await res.json();
+}
+
+export {
+    register,
+    login,
+    createStadium,
+    getPage,
+    getDetails,
+    createReview,
+    getReviews,
+    getStatistic,
+    removeStadium,
+    getMyStadiums
+};

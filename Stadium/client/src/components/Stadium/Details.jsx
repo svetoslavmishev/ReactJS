@@ -8,7 +8,7 @@ export default class Details extends Component {
         super(props);
 
         this.state = {
-            stadium: false
+            stadium: ''
         }
     }
 

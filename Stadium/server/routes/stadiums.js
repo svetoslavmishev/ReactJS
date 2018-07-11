@@ -55,6 +55,7 @@ function validateStadiumForm(payload) {
 
 router.post('/create', authCheck, (req, res) => {
     const stadium = req.body
+    stadium.creator = req.user.email;
 
     const validationResult = validateStadiumForm(stadium)
     if (!validationResult.success) {
@@ -101,8 +102,7 @@ router.get('/details/:id', authCheck, (req, res) => {
         image: stadium.image,
         metroLine: stadium.metroLine,
         createdOn: stadium.createdOn,
-        reviews: stadium.reviews,
-        createdBy: localStorage.getItem('token')
+        reviews: stadium.reviews
     }
 
     if (stadium.metroLine) {
@@ -155,47 +155,39 @@ router.get('/details/:id/reviews', authCheck, (req, res) => {
 
     res.status(200).json(response)
 })
-//add authCheck
-router.get('/stats', (req, res) => {
+
+router.get('/stats', authCheck, (req, res) => {
     const users = stadiumData.total()
     res.status(200).json(users)
 })
-//add authCheck
-router.get('/mystadiums', (req, res) => {
-    const user = req.user.email
-    const stadium = stadiumData.byUser(user)
 
-    res.status(200).json(stadium)
-})
-//add authCheck
-router.get('/delete/:id', (req, res) => {
+router.get('/mystadiums', authCheck, (req, res) => {
     const user = req.user.email
-    const stadium = stadiumData.byUser(user)
 
-    res.status(200).json(stadium)
+    const stadiums = stadiumData.byUser(user)
+
+    res.status(200).json(stadiums)
 })
-//delete fiunctionallity
+
 router.post('/delete/:id', authCheck, (req, res) => {
-  const id = req.params.id
-  const user = req.user.email
+    const id = req.params.id
+    const user = req.user.email
 
-  const stadium = stadiumData.findById(id)
+    const stadium = stadiumData.findById(id)
 
-  if (!stadium || stadium.createdBy !== user) {
+    if (!stadium || stadium.creator !== user) {
+        return res.status(200).json({
+            success: false,
+            message: 'Stadium does not exists!'
+        })
+    }
+
+    stadiumData.delete(id)
+
     return res.status(200).json({
-      success: false,
-      message: 'Stadium does not exists!'
+        success: true,
+        message: 'Stadium deleted successfully!'
     })
-  }
-
-  stadiumData.delete(id)
-
-  return res.status(200).json({
-    success: true,
-    message: 'Stadium deleted successfully!'
-  })
 })
-
-
 
 module.exports = router

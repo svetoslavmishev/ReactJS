@@ -10,7 +10,7 @@ const statsRoutes = require('./routes/stats')
 
 const app = express()
 
-const port = 8080
+const port = 5000
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())

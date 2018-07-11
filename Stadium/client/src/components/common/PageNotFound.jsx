@@ -15,7 +15,7 @@ const PageNotFound = () => {
                             Sorry, an error has occured, Requested page not found!
                         </div>
                         <div class="error-actions">
-                            <Link to="/" class="btn btn-primary btn-lg">Take Me Home </Link>
+                            <Link to="/" class="btn btn-primary btn-lg">Take Me Home</Link>
                         </div>
                     </div>
                 </div>

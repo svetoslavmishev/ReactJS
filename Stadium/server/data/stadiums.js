@@ -8,6 +8,7 @@ module.exports = {
 
     let newStadium = {
       id: stadium.id,
+      creator: stadium.creator,
       name: stadium.name,
       location: stadium.location,
       description: stadium.description,
@@ -57,7 +58,7 @@ module.exports = {
     return Object
       .keys(stadiums)
       .map(key => stadiums[key])
-      .filter(stadium => stadium.createdBy === user)
+      .filter(stadium => stadium.creator === user)
       .sort((a, b) => b.id - a.id)
   },
   delete: (id) => {
