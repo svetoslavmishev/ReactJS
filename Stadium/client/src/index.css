@@ -66,6 +66,19 @@ body {
   border-radius: 5px;
 }
 
+.btn btn-primary {
+  margin-right: 30px;
+}
+
+.panel panel-default {
+  border: 1px;
+}
+
+.col-sm-8 {
+  margin: 5px;
+  border:solid black 1px;
+}
+
 .error-template {padding: 40px 15px;text-align: center;}
 .error-actions {margin-top:15px;margin-bottom:15px;}
 .error-actions .btn { margin-right:10px; }

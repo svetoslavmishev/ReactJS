@@ -26,6 +26,7 @@ export default class LoginPage extends Component {
             .then(res => {
                 if (res.success) {
                     localStorage.setItem('token', res.token);
+                    localStorage.setItem('userEmail', res.user.userEmail);
                     toastr.success(res.message);
                     this.props.history.push('/');
                 } else {
@@ -38,7 +39,6 @@ export default class LoginPage extends Component {
         return (
             <div className="container">
                 <h1>Login</h1>
-
                 <form onSubmit={this.onSubmitHandler} className="form-group">
                     <Input
                         className="form-control"

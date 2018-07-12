@@ -15,15 +15,12 @@ router.get('/', (req, res) => {
   })
 })
 
-router.get('/all', authCheck, (req, res) => {
-  const users = usersData.findAll();
+router.get('/users', authCheck, (req, res) => {
+  const users = usersData.getAll();
 
   res.status(200).json({
     users
   })
 })
-
-
-
 
 module.exports = router

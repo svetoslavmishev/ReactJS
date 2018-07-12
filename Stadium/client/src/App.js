@@ -9,8 +9,9 @@ import HomePage from './components/HomePage/HomePage';
 import Details from './components/Stadium/Details';
 import PrivateRoute from './components/common/PrivateRoute';
 import PageNotFound from './components/common/PageNotFound';
-import AdminPanel from './components/Users/AdminPanel';
+import AdminPanel from './components/Admin/AdminPanel';
 import MyStadiums from './components/Users/MyStadiums';
+import EditStadium from './components/Stadium/EditStadium';
 
 class App extends Component {
     constructor(props) {
@@ -36,6 +37,7 @@ class App extends Component {
                     <Route path="/stadium/all" component={StadiumPage} />
                     <PrivateRoute path="/stadium/details/:id" component={Details} />
                     <Route path="/stadium/mystadiums" component={MyStadiums} />
+                    <Route path="/stadium/edit/:id" component={EditStadium} />
                     <Route path="/admin" component={AdminPanel} />
                     <Route component={PageNotFound} />
                 </Switch>

@@ -7,6 +7,8 @@ export default class StadiumsList extends Component {
             <div className="stadiums-list">
                 {this.props.stadiums.map(s => {
                     return <Stadium
+                        allowDelete={s.creator === localStorage.getItem('userEmail')}
+                        remove={() => this.props.deleteStadium(s.id)}
                         key={s.id}
                         id={s.id}
                         name={s.name}

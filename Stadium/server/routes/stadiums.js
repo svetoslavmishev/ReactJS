@@ -169,7 +169,7 @@ router.get('/mystadiums', authCheck, (req, res) => {
     res.status(200).json(stadiums)
 })
 
-router.post('/delete/:id', authCheck, (req, res) => {
+router.delete('/delete/:id', authCheck, (req, res) => {
     const id = req.params.id
     const user = req.user.email
 
@@ -189,5 +189,32 @@ router.post('/delete/:id', authCheck, (req, res) => {
         message: 'Stadium deleted successfully!'
     })
 })
+
+
+//EDIT
+router.put('/edit/:id', authCheck, (req, res) => {
+    const stadiumFields = req.body
+    const id = req.params.id
+
+    const stadium = stadiumData.findById(id)
+
+    const validationResult = validateStadiumForm(stadium)
+    if (!validationResult.success) {
+        return res.status(200).json({
+            success: false,
+            message: validationResult.message,
+            errors: validationResult.errors
+        })
+    }
+
+    stadiumData.update(stadium, stadiumFields)
+
+    res.status(200).json({
+        success: true,
+        message: 'Stadium updated successfuly.',
+        stadium
+    })
+})
+
 
 module.exports = router

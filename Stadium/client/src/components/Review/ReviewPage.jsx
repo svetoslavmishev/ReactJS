@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { createReview, getReviews } from '../../api/remote';
 import Review from './Review';
+import toastr from 'toastr';
 
 export default class ReviewPage extends Component {
     constructor(props) {
@@ -25,6 +26,7 @@ export default class ReviewPage extends Component {
         createReview(this.props.stadiumId, this.state.comment)
             .then(res => {
                 this.setState({ comment: res.comment });
+                toastr.success(res.message)
 
                 this.setState((prevState) => {
                     prevState.reviews.push(res.reviews);
@@ -62,7 +64,7 @@ export default class ReviewPage extends Component {
                     <input type="submit" value="Post review" />
                 </form>
 
-                {this.state.reviews.map((r,i) => {
+                {this.state.reviews.map((r, i) => {
                     return <Review key={i} comment={r.comment} user={r.user} createdOn={r.createdOn} />
                 })}
             </div>

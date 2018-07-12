@@ -16,5 +16,10 @@ module.exports = {
   findById: (id) => {
     return usersById[id]
   },
-  findAll: () => Object.keys()
+  getAll: () => {
+    return Object
+      .keys(usersByEmail)
+      .map(key => usersByEmail[key])
+      .sort((a, b) => b.userEmail - a.userEmail)
+  }
 }

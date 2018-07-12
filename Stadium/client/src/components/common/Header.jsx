@@ -25,7 +25,7 @@ export default class Header extends Component {
                             {loggedIn && <NavLink to="/stadium/mystadiums" className="nav-link">My Stadiums</NavLink>}
                         </li>
                         <li className="nav-item active">
-                            {loggedIn && <NavLink to="/admin" className="nav-link">Admin Panel</NavLink>}
+                            {loggedIn && <NavLink to="/admin" className="nav-link">Administrator</NavLink>}
                         </li>
                         <li className="nav-item active">
                             {loggedIn && <a href="" onClick={onLogout} className="nav-link">Logout</a>}

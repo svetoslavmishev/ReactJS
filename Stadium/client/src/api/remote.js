@@ -88,6 +88,16 @@ async function getStatistic() {
     return await res.json();
 }
 
+async function getAllUsers() {
+    const res = await fetch(host + `stats/users`, {
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+        }
+    });
+    return await res.json();
+}
+
 async function removeStadium(id) {
     const res = await fetch(host + `stadium/delete/${id}`, {
         method: 'DELETE',
@@ -108,6 +118,18 @@ async function getMyStadiums() {
     return await res.json();
 }
 
+async function updateStadium(stadium) {
+    const res = await fetch(host + 'stadium/create', {
+        method: 'POST',
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('token'),
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(stadium)
+    });
+    return await res.json();
+}
+
 export {
     register,
     login,
@@ -118,5 +140,7 @@ export {
     getReviews,
     getStatistic,
     removeStadium,
-    getMyStadiums
+    getMyStadiums,
+    updateStadium,
+    getAllUsers
 };

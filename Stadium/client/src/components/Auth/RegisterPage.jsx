@@ -29,6 +29,8 @@ export default class RegisterPage extends Component {
                 if (res.success) {
                     toastr.success(res.message)
                     this.props.history.push('/login');
+                } else {
+                    toastr.error(res.message);
                 }
             })
     }
@@ -67,7 +69,7 @@ export default class RegisterPage extends Component {
                         value={this.state.repeat}
                         onChange={this.onChangeHandler}
                         label="Repeat password"
-                    /><br/>
+                    /><br />
                     <input type="submit" className="btn btn-primary" value="Register" />
                 </form>
             </div>

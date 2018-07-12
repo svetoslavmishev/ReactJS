@@ -63,5 +63,28 @@ module.exports = {
   },
   delete: (id) => {
     delete stadiums[id]
+  },
+  update: (stadium, body) => {
+
+    let newStadium = {
+      id: stadium.id,
+      creator: stadium.creator,
+      name: body.name,
+      location: body.location,
+      description: body.description,
+      //last change
+      seats: Number(body.seats),
+      image: body.image,
+      createdOn: stadium.createdOn,
+      //last change
+      metroLine: Number(body.metroLine),
+      reviews: stadium.reviews,
+    }
+
+    if (stadium.metroLine) {
+      newStadium.metroLine = stadium.metroLine
+    }
+
+    stadiums[id] = newStadium
   }
 }

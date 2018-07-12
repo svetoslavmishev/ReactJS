@@ -1,13 +1,15 @@
 {
   "name": "Stadiums",
   "version": "0.0.1",
-  "description": "Pets system",
+  "description": "Stadiums guide app",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
   "keywords": [
-    "stadium"
+    "stadium",
+    "guide",
+    "football"
   ],
   "author": "SMM",
   "license": "MIT",
