@@ -64,27 +64,26 @@ module.exports = {
   delete: (id) => {
     delete stadiums[id]
   },
-  update: (stadium, body) => {
+  update: (stadium, body, id) => {
 
     let newStadium = {
-      id: stadium.id,
+      id: id,
       creator: stadium.creator,
       name: body.name,
       location: body.location,
       description: body.description,
-      //last change
-      seats: Number(body.seats),
+      seats: body.seats,
       image: body.image,
+      metroLine: body.metroLine,
       createdOn: stadium.createdOn,
-      //last change
-      metroLine: Number(body.metroLine),
-      reviews: stadium.reviews,
+      reviews: stadium.reviews
     }
 
     if (stadium.metroLine) {
-      newStadium.metroLine = stadium.metroLine
+      newStadium.metroLine = body.metroLine
     }
 
     stadiums[id] = newStadium
-  }
+    return newStadium
+  },
 }
