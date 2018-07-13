@@ -118,14 +118,14 @@ async function getMyStadiums() {
     return await res.json();
 }
 
-async function updateStadium(stadium) {
-    const res = await fetch(host + 'stadium/create', {
+async function updateStadium(newStadium, stadionId) {
+    const res = await fetch(host + `stadium/edit/${stadionId}`, {
         method: 'POST',
         headers: {
             'Authorization': 'Bearer ' + localStorage.getItem('token'),
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(stadium)
+        body: JSON.stringify(newStadium)
     });
     return await res.json();
 }

@@ -12,30 +12,14 @@ export default class Header extends Component {
                 </NavLink>
                 <div className="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul className="navbar-nav">
-                        <li className="nav-item active">
-                            <NavLink exact to="/" className="nav-link">Home</NavLink>
-                        </li>
-                        <li className="nav-item active">
-                            {<NavLink to="/stadium/all?page=1" className="nav-link">Stadiums</NavLink>}
-                        </li>
-                        <li className="nav-item active">
-                            {loggedIn && <NavLink to="/create" className="nav-link">Add Stadium</NavLink>}
-                        </li>
-                        <li className="nav-item active">
-                            {loggedIn && <NavLink to="/stadium/mystadiums" className="nav-link">My Stadiums</NavLink>}
-                        </li>
-                        <li className="nav-item active">
-                            {loggedIn && <NavLink to="/admin" className="nav-link">Administrator</NavLink>}
-                        </li>
-                        <li className="nav-item active">
-                            {loggedIn && <a href="" onClick={onLogout} className="nav-link">Logout</a>}
-                        </li>
-                        <li className="nav-item active">
-                            {!loggedIn && <NavLink to="/login" className="nav-link">Login</NavLink>}
-                        </li>
-                        <li className="nav-item active">
-                            {!loggedIn && <NavLink to="/register" className="nav-link">Register</NavLink>}
-                        </li>
+                        <NavLink exact to="/" className="nav-link">Home</NavLink>
+                        {<NavLink to="/stadium/all?page=1" className="nav-link">Stadiums</NavLink>}
+                        {loggedIn && <NavLink to="/create" className="nav-link">Add Stadium</NavLink>}
+                        {loggedIn && <NavLink to="/stadium/mystadiums" className="nav-link">My Stadiums</NavLink>}
+                        {loggedIn && <NavLink to="/admin" className="nav-link">Administrator</NavLink>}
+                        {loggedIn && <a href="" onClick={onLogout} className="nav-link">Logout</a>}
+                        {!loggedIn && <NavLink to="/login" className="nav-link">Login</NavLink>}
+                        {!loggedIn && <NavLink to="/register" className="nav-link">Register</NavLink>}
                     </ul>
                 </div>
             </nav>

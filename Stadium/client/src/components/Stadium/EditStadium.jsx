@@ -15,23 +15,20 @@ export default class EditStadium extends Component {
     this.onInputSubmit = this.onInputSubmit.bind(this);
   }
 
-  onInputChange(ev) {
-    this.setState({ value: ev.target.value })
+  onInputChange = (propName) => (ev) => {
+    const stadium = this.state.stadium;
+    const newStadium = {
+      ...stadium,
+      [propName]: ev.target.value
+    }
+
+    this.setState({ stadium: newStadium });
   }
 
   onInputSubmit(ev) {
     ev.preventDefault();
 
-    let stadium = {
-      name: this.state.value.name,
-      location: this.state.value.location,
-      description: this.state.value.description,
-      seats: Number(this.state.value.seats),
-      image: this.state.value.image,
-      metroLine: Number(this.state.value.metroLine)
-    }
-
-    updateStadium(stadium)
+    updateStadium(this.state.stadium, this.props.match.params.id)
       .then(res => {
         if (res.success) {
           toastr.success(res.message);
@@ -45,8 +42,7 @@ export default class EditStadium extends Component {
   componentDidMount() {
     getDetails(this.props.match.params.id)
       .then(res => {
-        console.log(res);
-        this.setState({ value: res })
+        this.setState({ stadium: res })
       })
   }
 
@@ -60,41 +56,41 @@ export default class EditStadium extends Component {
             className="form-control"
             name="name"
             label="Name"
-            onChange={this.onInputChange}
-            value={this.state.value.name} />
+            onChange={this.onInputChange('name')}
+            value={this.state.stadium.name} />
           <Input
             className="form-control"
             name="location"
             label="Location"
-            onChange={this.onInputChange}
-            value={this.state.value.location} />
+            onChange={this.onInputChange('location')}
+            value={this.state.stadium.location} />
           <label>Description</label>
           <textarea
             className="form-control"
             name="description"
-            onChange={this.onInputChange}
-            value={this.state.value.description}>
+            onChange={this.onInputChange('description')}
+            value={this.state.stadium.description}>
           </textarea>
           <Input
             className="form-control"
             name="image"
             label="Image"
-            onChange={this.onInputChange}
-            value={this.state.value.image} />
+            onChange={this.onInputChange('image')}
+            value={this.state.stadium.image} />
           <Input
             className="form-control"
             name="seats"
             type="number"
             label="Seats"
-            onChange={this.onInputChange}
-            value={this.state.value.seats} />
+            onChange={this.onInputChange('seats')}
+            value={this.state.stadium.seats} />
           <Input
             className="form-control"
             name="metroLine"
             type="number"
             label="Metro Line"
-            onChange={this.onInputChange}
-            value={this.state.value.metroLine} />
+            onChange={this.onInputChange('metroLine')}
+            value={this.state.stadium.metroLine} />
           <br />
           <input type="submit" className="btn btn-primary" value="Edit" />
         </form>

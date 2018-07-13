@@ -35,7 +35,9 @@ export default class StadiumPage extends Component {
         return (
             <div className="welcome-box">
                 <h1><b>FIFA Stadiums</b></h1>
-                <StadiumsList stadiums={this.state.stadiums} deleteStadium={this.deleteStadium} />
+                <StadiumsList
+                    stadiums={this.state.stadiums}
+                    deleteStadium={this.deleteStadium} />
 
                 {/* TODO PAGINATION */}
             </div >

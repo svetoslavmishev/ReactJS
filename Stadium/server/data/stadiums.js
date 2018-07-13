@@ -67,7 +67,7 @@ module.exports = {
   update: (stadium, body, id) => {
 
     let newStadium = {
-      id: id,
+      id,
       creator: stadium.creator,
       name: body.name,
       location: body.location,

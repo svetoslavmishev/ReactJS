@@ -9,13 +9,20 @@ export default class MyStadiums extends Component {
         super(props);
 
         this.state = {
-            stadiums: []
+            stadiums: [],
+            username: '',
+            email: ''
         }
 
     }
 
     componentDidMount() {
         this.getData();
+    }
+
+    async getUserData() {
+        //TODO STATISTIKA ZA LOGNAT USER V PRIFILA
+
     }
 
     async deleteStadium(id) {
@@ -36,7 +43,7 @@ export default class MyStadiums extends Component {
     render() {
         return (
             < div className="stadiums-list" >
-                <Profile />
+                <Profile username={this.state.username} email={this.state.email} />
                 {this.state.stadiums.map(s => {
                     return <Stadium
                         allowDelete={s.creator === localStorage.getItem('userEmail')}

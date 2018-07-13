@@ -19,8 +19,8 @@ export default class Profile extends Component {
                                         </cite>
                                     </small>
                                     <p>
-                                        <i className="glyphicon glyphicon-envelope"></i> <a href="/">you@domain.com</a><br />
-                                        <i className="glyphicon glyphicon-globe"></i> <a href="/">http://domain.com</a>
+                                        <i className="glyphicon glyphicon-envelope"></i> <a href="/">{this.props.username}</a><br />
+                                        <i className="glyphicon glyphicon-globe"></i> <a href="/">{this.props.email}</a>
                                     </p>
                                 </div>
                             </div>

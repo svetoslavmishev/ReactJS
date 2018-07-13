@@ -8,7 +8,7 @@ import CreateStadium from './components/Stadium/CreateStadium';
 import HomePage from './components/HomePage/HomePage';
 import Details from './components/Stadium/Details';
 import PrivateRoute from './components/common/PrivateRoute';
-import PageNotFound from './components/common/PageNotFound';
+import PageNotFound from './components/PageNotFound/PageNotFound';
 import AdminPanel from './components/Admin/AdminPanel';
 import MyStadiums from './components/Users/MyStadiums';
 import EditStadium from './components/Stadium/EditStadium';

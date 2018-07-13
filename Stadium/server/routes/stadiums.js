@@ -190,11 +190,9 @@ router.delete('/delete/:id', authCheck, (req, res) => {
     })
 })
 
-//EDIT
-router.put('/edit/:id', authCheck, (req, res) => {
+router.post('/edit/:id', authCheck, (req, res) => {
     const stadiumFields = req.body
-    const stadiumId = req.params.id
-    const stadium = stadiumData.findById(stadiumId)
+    const stadium = stadiumData.findById(req.params.id)
 
     const validationResult = validateStadiumForm(stadium)
     if (!validationResult.success) {
@@ -205,7 +203,7 @@ router.put('/edit/:id', authCheck, (req, res) => {
         })
     }
 
-    stadiumData.update(stadium, stadiumFields, stadiumId)
+    stadiumData.update(stadium, stadiumFields, req.params.id)
 
     res.status(200).json({
         success: true,
@@ -213,6 +211,5 @@ router.put('/edit/:id', authCheck, (req, res) => {
         stadium
     })
 })
-
 
 module.exports = router
