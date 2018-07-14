@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { getMyStadiums, removeStadium } from '../../api/remote';
 import Stadium from '../Stadium/Stadium';
-import Profile from './Profile';
 import toastr from 'toastr';
 
 export default class MyStadiums extends Component {
@@ -12,17 +11,11 @@ export default class MyStadiums extends Component {
             stadiums: [],
             username: '',
             email: ''
-        }
-
+        };
     }
 
     componentDidMount() {
         this.getData();
-    }
-
-    async getUserData() {
-        //TODO STATISTIKA ZA LOGNAT USER V PRIFILA
-
     }
 
     async deleteStadium(id) {
@@ -37,16 +30,16 @@ export default class MyStadiums extends Component {
         getMyStadiums()
             .then(res => {
                 this.setState({ stadiums: res })
-            })
+            });
     }
 
     render() {
         return (
-            < div className="stadiums-list" >
-                <Profile username={this.state.username} email={this.state.email} />
+            < div className="stadiums-box" >
                 {this.state.stadiums.map(s => {
                     return <Stadium
-                        allowDelete={s.creator === localStorage.getItem('userEmail')}
+                        allowUserDelete={s.creator === localStorage.getItem('userEmail')}
+                        allowAdminDelete={localStorage.getItem('userEmail') === 'admin@admin.bg'}
                         remove={() => this.deleteStadium(s.id)}
                         key={s.id}
                         id={s.id}

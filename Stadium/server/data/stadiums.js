@@ -85,5 +85,5 @@ module.exports = {
 
     stadiums[id] = newStadium
     return newStadium
-  },
+  }
 }

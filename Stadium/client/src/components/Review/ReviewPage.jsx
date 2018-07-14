@@ -32,7 +32,7 @@ export default class ReviewPage extends Component {
                     prevState.reviews.push(res.reviews);
                     this.getData();
                 });
-            })//TODO CATCH THE ERRORS
+            })
 
         this.setState({ comment: '' })
 
@@ -51,19 +51,19 @@ export default class ReviewPage extends Component {
 
     render() {
         return (
-            <div>
+            <div className="details-box">
                 <h4>Leave a review</h4>
                 <form onSubmit={this.onTextAreaSubmit}>
                     <textarea
                         name="comment"
                         value={this.state.comment}
                         onChange={this.onTextAreaChange}
-                        cols="50"
-                        rows="5">
+                        cols="38"
+                        rows="3">
                     </textarea><br />
-                    <input type="submit" value="Post review" />
+                    <input class="btn btn-primary" type="submit" value="Post" />
                 </form>
-
+                <br />
                 {this.state.reviews.map((r, i) => {
                     return <Review key={i} comment={r.comment} user={r.user} createdOn={r.createdOn} />
                 })}

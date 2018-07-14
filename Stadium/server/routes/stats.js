@@ -43,4 +43,25 @@ router.post('/delete/:id', authCheck, (req, res) => {
   })
 })
 
+router.get('/user/details/:id', authCheck, (req, res) => {
+  const id = req.params.id
+  const user = usersData.findById(id)
+
+  res.status(200).json(user)
+})
+
+router.post('/user/edit/:id', authCheck, (req, res) => {
+  const userFields = req.body
+  const user = usersData.findById(req.params.id)
+  const email = req.body.email
+
+  usersData.updateUser(userFields, req.params.id, email)
+
+  res.status(200).json({
+    success: true,
+    message: 'User updated successfuly.',
+    user
+  })
+})
+
 module.exports = router

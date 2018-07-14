@@ -52,5 +52,17 @@ module.exports = {
   deleteUser: (id, email) => {
     delete usersById[id]
     delete usersByEmail[email]
+  },
+  updateUser: (body, id, email) => {
+    let newUser = {
+      id,
+      email: body.email,
+      name: body.name,
+      password: body.password
+    }
+
+    usersById[id] = newUser
+    usersByEmail[email] = newUser
+    return newUser;
   }
 }

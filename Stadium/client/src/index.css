@@ -23,10 +23,11 @@ body {
 }
 
 .details-box { 
-  text-align: center;
-  width: 40%;
   height: 450px;
-  
+  text-align: center;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
 }
 
 .welcome-box {
@@ -55,9 +56,13 @@ body {
   align-content: center
 }
 
-
 .form-control {
-  width: 380px;
+  width: 400px;
+}
+
+.form-group {
+  display: inline;
+  padding: 20px;
 }
 
 .article-box {
@@ -71,7 +76,15 @@ body {
   margin-right: 30px;
 }
 
+.btn btn-secondary {
+  margin-right: 30px;
+}
 
+.container {
+  padding: 20px;
+  margin: 10px;
+  align-content: center
+}
 
 .panel panel-default {
   border: 1px;
@@ -80,6 +93,13 @@ body {
 .col-sm-8 {
   margin: 5px;
   border:solid black 1px;
+}
+
+.media-list {
+  width: 330px;
+  padding: 5px;
+  margin: 3px;
+  border: solid 1px;
 }
 
 .error-template {padding: 40px 15px;text-align: center;}

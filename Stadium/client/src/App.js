@@ -14,6 +14,7 @@ import MyStadiums from './components/Users/MyStadiums';
 import EditStadium from './components/Stadium/EditStadium';
 
 import withAdminAuthorization from './components/Admin/Roles/withAuthorization';
+import Profile from './components/Users/Profile';
 
 class App extends Component {
     constructor(props) {
@@ -39,6 +40,7 @@ class App extends Component {
                     <Route path="/stadium/all" component={StadiumPage} />
                     <PrivateRoute path="/stadium/details/:id" component={Details} />
                     <Route path="/stadium/mystadiums" component={MyStadiums} />
+                    <Route path="/user/details/:id" component={Profile} />
                     <Route path="/stadium/edit/:id" component={EditStadium} />
                     <Route path="/admin" component={withAdminAuthorization(AdminPanel)} />
                     <Route component={PageNotFound} />

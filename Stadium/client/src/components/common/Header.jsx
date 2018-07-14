@@ -8,7 +8,7 @@ export default class Header extends Component {
         return (
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <NavLink className="navbar-brand" to="/">
-                    <img src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWYa84Qf0ckN-UME4-P6M_-tBmiTlyr_hXMyP9cCnpghIdw3nc'} alt="stadium logo" width="80" height="50" />
+                    <img src={'https://img.watchstadium.com/c/3/t/3/i/stadium_logo_stacked_new_0000012.png/width/727'} alt="stadium logo" width="150" height="55" />
                 </NavLink>
                 <div className="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul className="navbar-nav">

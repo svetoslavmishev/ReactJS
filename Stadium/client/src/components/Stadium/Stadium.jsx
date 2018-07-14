@@ -13,8 +13,8 @@ export default class Stadium extends Component {
                 <br />
                 <Link to={'/stadium/details/' + Number(this.props.id)} className="btn btn-primary">Details</Link>
 
-                {this.props.allowDelete && <Link className="btn btn-primary" to={'/stadium/edit/' + Number(this.props.id)}>Edit</Link>}
-                {this.props.allowDelete && <a className="btn btn-primary" href='javascript:;' onClick={this.props.remove}>Delete</a>}
+                {(this.props.allowUserDelete || this.props.allowAdminDelete) && <Link className="btn btn-primary" to={'/stadium/edit/' + Number(this.props.id)}>Edit</Link>}
+                {(this.props.allowUserDelete || this.props.allowAdminDelete) && <a className="btn btn-primary" href='javascript:;' onClick={this.props.remove}>Delete</a>}
             </div >
         )
     }

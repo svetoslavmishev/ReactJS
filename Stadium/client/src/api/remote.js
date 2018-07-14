@@ -142,6 +142,28 @@ async function removeUser(user) {
     return await res.json();
 }
 
+async function userDetails(id) {
+    const res = await fetch(host + `stats/user/details/${id}`, {
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+        }
+    });
+    return await res.json();
+}
+
+async function updateUser(newUser, userId) {
+    const res = await fetch(host + `stats/user/edit/${userId}`, {
+        method: 'POST',
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('token'),
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newUser)
+    });
+    return await res.json();
+}
+
 export {
     register,
     login,
@@ -155,5 +177,7 @@ export {
     getMyStadiums,
     updateStadium,
     getAllUsers,
-    removeUser
+    removeUser,
+    userDetails,
+    updateUser
 };

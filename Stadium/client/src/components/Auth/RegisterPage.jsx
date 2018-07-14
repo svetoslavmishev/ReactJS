@@ -11,7 +11,9 @@ export default class RegisterPage extends Component {
             name: '',
             email: '',
             password: '',
-            repeat: ''
+            repeat: '',
+            errors: ''
+
         };
 
         this.onChangeHandler = this.onChangeHandler.bind(this);
@@ -24,13 +26,20 @@ export default class RegisterPage extends Component {
 
     onSubmitHandler(e) {
         e.preventDefault();
+
+        if (this.state.password !== this.state.repeat) {
+            this.setState({
+                errors: 'Passwords don`t match or are less then 4 symbols'
+            });
+        }
+
         register(this.state.name, this.state.email, this.state.password)
             .then(res => {
                 if (res.success) {
                     toastr.success(res.message)
                     this.props.history.push('/login');
                 } else {
-                    toastr.error(res.message);
+                    toastr.error(this.state.errors);
                 }
             })
     }

@@ -23,7 +23,7 @@ export default class AdminPanel extends Component {
     }
 
     async getDataStatistic() {
-        getStatistic()
+        await getStatistic()
             .then(stats => {
                 this.setState({
                     stadiums: stats.stadiums,
@@ -33,7 +33,7 @@ export default class AdminPanel extends Component {
     }
 
     async getDataTable() {
-        getAllUsers()
+        await getAllUsers()
             .then(res => {
                 this.setState({
                     users: res
