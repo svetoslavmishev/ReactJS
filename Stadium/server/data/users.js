@@ -1,5 +1,32 @@
-const usersById = {}
-const usersByEmail = {}
+const usersById = {
+  "1": {
+    id: "1",
+    email: "admin@admin.bg",
+    name: "admin",
+    password: "admin"
+  },
+  "2": {
+    id: "2",
+    email: "ivan@abv.bg",
+    name: "ivan",
+    password: "ivan"
+  }
+}
+
+const usersByEmail = {
+  "admin@admin.bg": {
+    id: "1",
+    email: "admin@admin.bg",
+    name: "admin",
+    password: "admin"
+  },
+  "ivan@abv.bg": {
+    id: "2",
+    email: "ivan@abv.bg",
+    name: "ivan",
+    password: "ivan"
+  }
+}
 
 module.exports = {
   total: () => Object.keys(usersById).length,
@@ -20,10 +47,10 @@ module.exports = {
     return Object
       .keys(usersByEmail)
       .map(key => usersByEmail[key])
-      .sort((a, b) => b.userEmail - a.userEmail)
+      .sort((a, b) => b.email - a.email)
   },
-  //da se probva pak
-  deleteUserById: (id) => {
+  deleteUser: (id, email) => {
     delete usersById[id]
+    delete usersByEmail[email]
   }
 }

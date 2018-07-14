@@ -130,12 +130,14 @@ async function updateStadium(newStadium, stadionId) {
     return await res.json();
 }
 
-async function removeUser(id) {
-    const res = await fetch(host + `stats/delete/${id}`, {
-        method: 'DELETE',
+async function removeUser(user) {
+    const res = await fetch(host + `stats/delete/${user.id}`, {
+        method: 'POST',
         headers: {
-            'Authorization': 'Bearer ' + localStorage.getItem('token')
-        }
+            'Authorization': 'Bearer ' + localStorage.getItem('token'),
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email: user.email })
     });
     return await res.json();
 }

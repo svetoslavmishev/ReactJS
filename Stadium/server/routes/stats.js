@@ -18,12 +18,12 @@ router.get('/', (req, res) => {
 router.get('/users', authCheck, (req, res) => {
   const users = usersData.getAll();
 
-
   res.status(200).json(users)
 })
 
-router.delete('/delete/:id', authCheck, (req, res) => {
+router.post('/delete/:id', authCheck, (req, res) => {
   const id = req.params.id
+  const email = req.body.email
 
   const users = usersData.findById(id)
 
@@ -34,11 +34,12 @@ router.delete('/delete/:id', authCheck, (req, res) => {
     })
   }
 
-  usersData.deleteUserById(id)
+  usersData.deleteUser(id, email)
 
   return res.status(200).json({
     success: true,
-    message: 'User deleted successfully!'
+    message: 'User deleted successfully!',
+    records: usersData.getAll()
   })
 })
 

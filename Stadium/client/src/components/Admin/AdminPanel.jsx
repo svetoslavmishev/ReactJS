@@ -17,8 +17,6 @@ export default class AdminPanel extends Component {
         this.deleteUser = this.deleteUser.bind(this);
     }
 
-
-
     componentDidMount() {
         this.getDataStatistic();
         this.getDataTable();
@@ -39,17 +37,20 @@ export default class AdminPanel extends Component {
             .then(res => {
                 this.setState({
                     users: res
-                })
-            })
+                });
+            });
     }
 
-    async deleteUser(id) {
-        const res = await removeUser(id);
+    async deleteUser(user) {
+        const res = await removeUser(user);
         if (res.success) {
             toastr.success(res.message);
         }
 
-        this.getDataTable();
+        this.setState({
+            users: res.records,
+            count: res.records.length
+        });
     }
 
     render() {
@@ -73,7 +74,7 @@ export default class AdminPanel extends Component {
                         {this.state.users.map(user => {
                             return <AdminRow
                                 isAdmin={user.email !== 'admin@admin.bg'}
-                                deleteUser={() => this.deleteUser(user.id)}
+                                deleteUser={() => this.deleteUser(user)}
                                 key={user.id}
                                 id={user.id}
                                 name={user.name}
