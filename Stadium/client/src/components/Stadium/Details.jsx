@@ -29,10 +29,6 @@ export default class Details extends Component {
                 </div>
                 <p>Description:{this.state.stadium.description}</p>
                 <p>Metro Line to stadium:<b>{this.state.stadium.metroLine}</b></p>
-
-                {/* IF USER IS ADMIN EDIT AND DELETE BUTTONS ARE ACTIVE  */}
-                {/* <p><Link className="btn btn-primary" to="/" >Edit</Link> <Link className="btn btn-primary" to="/" >Delete</Link></p>     */}
-
                 <ReviewPage stadiumId={this.props.match.params.id} />
             </div >
         )

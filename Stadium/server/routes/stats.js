@@ -18,8 +18,27 @@ router.get('/', (req, res) => {
 router.get('/users', authCheck, (req, res) => {
   const users = usersData.getAll();
 
-  res.status(200).json({
-    users
+
+  res.status(200).json(users)
+})
+
+router.delete('/delete/:id', authCheck, (req, res) => {
+  const id = req.params.id
+
+  const users = usersData.findById(id)
+
+  if (!users) {
+    return res.status(200).json({
+      success: false,
+      message: 'User does not exists!'
+    })
+  }
+
+  usersData.deleteUserById(id)
+
+  return res.status(200).json({
+    success: true,
+    message: 'User deleted successfully!'
   })
 })
 

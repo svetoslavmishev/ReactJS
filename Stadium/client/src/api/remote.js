@@ -130,6 +130,16 @@ async function updateStadium(newStadium, stadionId) {
     return await res.json();
 }
 
+async function removeUser(id) {
+    const res = await fetch(host + `stats/delete/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+        }
+    });
+    return await res.json();
+}
+
 export {
     register,
     login,
@@ -142,5 +152,6 @@ export {
     removeStadium,
     getMyStadiums,
     updateStadium,
-    getAllUsers
+    getAllUsers,
+    removeUser
 };

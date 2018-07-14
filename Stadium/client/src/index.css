@@ -14,6 +14,7 @@ body {
 }
 
 .stadium-box { 
+  display: inline-table;
   text-align: center;
   width: 550px;
   height: 400px;
@@ -69,6 +70,8 @@ body {
 .btn btn-primary {
   margin-right: 30px;
 }
+
+
 
 .panel panel-default {
   border: 1px;

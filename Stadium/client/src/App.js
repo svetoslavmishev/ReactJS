@@ -13,6 +13,8 @@ import AdminPanel from './components/Admin/AdminPanel';
 import MyStadiums from './components/Users/MyStadiums';
 import EditStadium from './components/Stadium/EditStadium';
 
+import withAdminAuthorization from './components/Admin/Roles/withAuthorization';
+
 class App extends Component {
     constructor(props) {
         super(props);
@@ -38,7 +40,7 @@ class App extends Component {
                     <PrivateRoute path="/stadium/details/:id" component={Details} />
                     <Route path="/stadium/mystadiums" component={MyStadiums} />
                     <Route path="/stadium/edit/:id" component={EditStadium} />
-                    <Route path="/admin" component={AdminPanel} />
+                    <Route path="/admin" component={withAdminAuthorization(AdminPanel)} />
                     <Route component={PageNotFound} />
                 </Switch>
             </div>

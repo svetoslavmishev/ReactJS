@@ -19,7 +19,8 @@ export default class StadiumPage extends Component {
     }
 
     async getData() {
-        const res = await getPage(1);
+        const page = this.props.match.params.page || 1;
+        const res = await getPage(page);
         this.setState({ stadiums: res });
     }
 
@@ -40,6 +41,7 @@ export default class StadiumPage extends Component {
                     deleteStadium={this.deleteStadium} />
 
                 {/* TODO PAGINATION */}
+
             </div >
         );
     }

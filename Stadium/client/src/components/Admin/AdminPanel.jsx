@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { getStatistic, getAllUsers } from '../../api/remote';
+import { getStatistic, getAllUsers, removeUser } from '../../api/remote';
 import AdminRow from './AdminRow';
 import Statistic from '../Users/Statistic';
+import toastr from 'toastr';
 
-
-export default class AdminPAnel extends Component {
+export default class AdminPanel extends Component {
     constructor(props) {
         super(props);
 
@@ -13,24 +13,43 @@ export default class AdminPAnel extends Component {
             count: '',
             users: []
         }
+
+        this.deleteUser = this.deleteUser.bind(this);
     }
+
+
 
     componentDidMount() {
-        this.getData();
+        this.getDataStatistic();
+        this.getDataTable();
     }
 
-    async getData() {
+    async getDataStatistic() {
         getStatistic()
             .then(stats => {
-                getAllUsers()
-                    .then(users => {
-                        this.setState({
-                            stadiums: stats.stadiums,
-                            count: stats.users,
-                            users: users.users
-                        })
-                    })
+                this.setState({
+                    stadiums: stats.stadiums,
+                    count: stats.users
+                })
             })
+    }
+
+    async getDataTable() {
+        getAllUsers()
+            .then(res => {
+                this.setState({
+                    users: res
+                })
+            })
+    }
+
+    async deleteUser(id) {
+        const res = await removeUser(id);
+        if (res.success) {
+            toastr.success(res.message);
+        }
+
+        this.getDataTable();
     }
 
     render() {
@@ -45,15 +64,21 @@ export default class AdminPAnel extends Component {
                 <table className="table table-hover">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">id</th>
+                            <th scope="col">userID</th>
                             <th scope="col">Username</th>
                             <th scope="col">Email</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {this.state.users.map((user, index) => {
-                            return <AdminRow key={user.id} id={user.id} name={user.name} email={user.email} index={++index} />
+                        {this.state.users.map(user => {
+                            return <AdminRow
+                                isAdmin={user.email !== 'admin@admin.bg'}
+                                deleteUser={() => this.deleteUser(user.id)}
+                                key={user.id}
+                                id={user.id}
+                                name={user.name}
+                                email={user.email}
+                            />
                         })}
                     </tbody>
                 </table>

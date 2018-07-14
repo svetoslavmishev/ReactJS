@@ -21,5 +21,9 @@ module.exports = {
       .keys(usersByEmail)
       .map(key => usersByEmail[key])
       .sort((a, b) => b.userEmail - a.userEmail)
+  },
+  //da se probva pak
+  deleteUserById: (id) => {
+    delete usersById[id]
   }
 }
