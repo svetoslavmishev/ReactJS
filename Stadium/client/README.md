@@ -23,7 +23,7 @@ System administrator has administrative access to the system and permissions to 
 
 Stadium uses a number of open source projects to work properly:
 
-* React - awesome web-based text editor
+* React - declarative, efficient, and flexible JavaScript library
 * Bootstrap - great UI boilerplate for modern web apps
 * node.js - evented I/O for the backend
 * Express - fast node.js network app 

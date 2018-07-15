@@ -45,9 +45,9 @@ module.exports = {
   },
   getAll: () => {
     return Object
-      .keys(usersByEmail)
-      .map(key => usersByEmail[key])
-      .sort((a, b) => b.email - a.email)
+      .keys(usersById)
+      .map(key => usersById[key])
+      .sort((a, b) => a.id - b.id)
   },
   deleteUser: (id, email) => {
     delete usersById[id]
