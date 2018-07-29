@@ -1,5 +1,6 @@
 let stadiums = {}
 
+
 module.exports = {
   total: () => Object.keys(stadiums).length,
   save: (stadium) => {

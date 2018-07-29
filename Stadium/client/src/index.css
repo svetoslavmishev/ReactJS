@@ -24,16 +24,15 @@ body {
 
 .details-box { 
   height: 450px;
-  text-align: center;
+  text-align: left;
   margin: auto;
-  width: 50%;
   padding: 10px;
 }
 
 .welcome-box {
     margin: auto;
     text-align: center;
-    width: 55%;
+    width: 70%;
     height: 25%;
     padding: 10px;
 }
@@ -47,6 +46,7 @@ body {
   width: 500px;
   height: 250px;
 }
+
 
 .action {
   padding: 5px;
@@ -72,14 +72,6 @@ body {
   border-radius: 5px;
 }
 
-.btn btn-primary {
-  margin-right: 30px;
-}
-
-.btn btn-secondary {
-  margin-right: 30px;
-}
-
 .container {
   padding: 20px;
   margin: 10px;
@@ -100,6 +92,21 @@ body {
   padding: 5px;
   margin: 3px;
   border: solid 1px;
+}
+
+.card {
+  display: inline-block;
+  width: 19rem;
+  padding: 15px;
+  margin: 15px;
+}
+
+.card text-center {
+  width: 18rem;
+}
+
+.carousel {
+  width: 60%;
 }
 
 .error-template {padding: 40px 15px;text-align: center;}

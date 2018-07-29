@@ -1,3 +1,5 @@
+![Screenshot](reactstadiums.jpg)
+
 # Stadium
 
 This web application using React framework with Node.js and Expresss.js back-end. It presents guide for stadiums which has information about stadiums all over the world their names, capacity, location, some interesting facts and direct metro line to the stadium if exist.
@@ -9,7 +11,7 @@ This web application using React framework with Node.js and Expresss.js back-end
 
 # Public Part
 
-The public part is available for all users without authentication. The public part is start page, the user login and user registration forms, as well as the list with all created stadiums (Stadium) and short information about each of them. Unregistered users can’t see the details and post review about stadiums.
+The public part is available for all users without authentication. The public part is start page, the user login and user registration forms, as well as the list with all created stadiums (Stadium) and short information about each of them. Unregistered users canï¿½t see the details and post review about stadiums.
 
 # Private Part (User Area)
 
