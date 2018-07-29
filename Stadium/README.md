@@ -19,6 +19,10 @@ Registered users has personal page (My Stadiums) with their own stadiums in the 
 
 # Administration Part
 
+```sh
+email: admin@admin.bg
+password: admin
+```
 System administrator has administrative access to the system and permissions to administer all major information objects in the application. Administrator can create, delete and update all stadium information, and create delete and edit user information. Administrator has personal page (Administrator) with information about all users, statistic about number of users and number of stadiums.
 
 ### Tech
