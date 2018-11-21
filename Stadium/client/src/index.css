@@ -1,6 +1,5 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "~toastr/build/toastr.min.css";
-
 body {
   margin: 0;
   padding: 0;
@@ -13,7 +12,7 @@ body {
   text-align: center;
 }
 
-.stadium-box { 
+.stadium-box {
   display: inline-table;
   text-align: center;
   width: 550px;
@@ -22,7 +21,7 @@ body {
   margin: 10px;
 }
 
-.details-box { 
+.details-box {
   height: 450px;
   text-align: left;
   margin: auto;
@@ -30,16 +29,16 @@ body {
 }
 
 .welcome-box {
-    margin: auto;
-    text-align: center;
-    width: 70%;
-    height: 25%;
-    padding: 10px;
+  margin: auto;
+  text-align: center;
+  width: 70%;
+  height: 25%;
+  padding: 10px;
 }
 
-.welcome-image {   
-    width: 600px;
-    height: 300px;
+.welcome-image {
+  width: 600px;
+  height: 300px;
 }
 
 .stadium-img {
@@ -47,17 +46,16 @@ body {
   height: 250px;
 }
 
-
 .action {
   padding: 5px;
 }
 
-.stadiums-list{
+.stadiums-list {
   align-content: center
 }
 
 .form-control {
-  width: 400px;
+  width: 360px;
 }
 
 .form-group {
@@ -73,9 +71,11 @@ body {
 }
 
 .container {
-  padding: 20px;
-  margin: 10px;
-  align-content: center
+  padding: 35px;
+  margin: 40px auto;
+  width: 430px;
+  align-content: center;
+  box-shadow:3px 3px 5px 6px #ccc;
 }
 
 .panel panel-default {
@@ -84,7 +84,7 @@ body {
 
 .col-sm-8 {
   margin: 5px;
-  border:solid black 1px;
+  border: solid black 1px;
 }
 
 .media-list {
@@ -109,6 +109,16 @@ body {
   width: 60%;
 }
 
-.error-template {padding: 40px 15px;text-align: center;}
-.error-actions {margin-top:15px;margin-bottom:15px;}
-.error-actions .btn { margin-right:10px; }
+.error-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+.error-actions {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.error-actions .btn {
+  margin-right: 10px;
+}
