@@ -42,7 +42,8 @@ Install the dependencies and devDependencies and start the server.
 
 ```sh
 $ npm install
-$ npm start - for client and server folders
+$ npm start in client folder
+$ npm start in server folder
 ```
 
 License
